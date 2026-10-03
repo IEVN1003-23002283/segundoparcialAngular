@@ -1,0 +1,68 @@
+<div class="row">
+
+    <div class="col-6">
+
+        <div class="mb-3">
+            <label>Nombre</label>
+            <input type="text" [(ngModel)]="nombre" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>Apellido paterno</label>
+            <input type="text" [(ngModel)]="apellidoPaterno" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>Apellido materno</label>
+            <input type="text" [(ngModel)]="apellidoMaterno" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>Día</label>
+            <input type="number" [(ngModel)]="dia" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>Mes</label>
+            <input type="number" [(ngModel)]="mes" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>Año</label>
+            <input type="number" [(ngModel)]="anio" class="form-control">
+        </div>
+
+        <div class="mb-3">
+            <label>Sexo</label>
+
+            <div>
+                <input type="radio" name="sexo" value="Hombre" [(ngModel)]="sexo">
+                Hombre
+            </div>
+
+            <div>
+                <input type="radio" name="sexo" value="Mujer" [(ngModel)]="sexo">
+                Mujer
+            </div>
+        </div>
+
+        <button (click)="calcular()" type="button" class="btn btn-primary">
+            Imprimir
+        </button>
+
+    </div>
+
+    <div class="col-6">
+
+        <h3>{{mensaje}}</h3>
+
+        <h3>Edad: {{edad}}</h3>
+
+        <h3>Tu Signo es: {{signo}}</h3>
+
+        <img [src]="imagen" width="200">
+
+    </div>
+
+</div>
+
