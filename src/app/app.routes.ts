@@ -1,3 +1,4 @@
+
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -5,7 +6,6 @@ export const routes: Routes = [
   {
     path: 'formulario',
     children: [
-
       {
         path: 'alumnos',
         loadComponent: () =>
@@ -13,28 +13,41 @@ export const routes: Routes = [
             (c) => c.Distancia
           ),
       },
-
       {
         path: 'zodiaco',
         loadComponent: () =>
           import('./formulario/zodiaco/zodiaco').then(
             (c) => c.Zodiaco
           ),
-      },
-
-       {
-        path: 'escuela',
-        loadComponent: () =>
-          import('./escuela/lista-escuela/lista-escuela').then(
-            (c) => c.ListaEscuela
-          ),
       }
-
     ]
   },
 
-  { path: '', redirectTo: 'formulario/zodiaco', pathMatch: 'full' },
+  {
+    path: 'escuela',
+    loadComponent: () =>
+      import('./escuela/lista-escuela/lista-escuela').then(
+        (c) => c.ListaEscuela
+      ),
+  },
 
-  { path: '**', redirectTo: 'formulario/zodiaco' }
+  {
+    path: 'cinepolis',
+    loadComponent: () =>
+      import('./escuela/cinepolis/cinepolis').then(
+        (c) => c.Cinepolis
+      ),
+  },
+
+  {
+    path: '',
+    redirectTo: 'formulario/zodiaco',
+    pathMatch: 'full'
+  },
+
+  {
+    path: '**',
+    redirectTo: 'formulario/zodiaco'
+  }
 
 ];
