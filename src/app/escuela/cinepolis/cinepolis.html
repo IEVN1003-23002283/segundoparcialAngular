@@ -1,1 +1,133 @@
-<p>cinepolis works!</p>
+
+<div class="min-h-screen bg-neutral-primary pt-28 px-4 pb-10">
+
+  <div class="max-w-xl mx-auto p-6 bg-neutral-primary border border-default rounded-base shadow-xs">
+
+    <h1 class="text-3xl font-bold text-heading text-center mb-2">
+      Cinépolis
+    </h1>
+
+    <!-- NOMBRE -->
+    <div class="mb-4">
+
+      <label class="block mb-2 text-sm font-medium text-heading">
+        Nombre
+      </label>
+
+      <input
+        type="text"
+        [(ngModel)]="nombre"
+        placeholder="Nombre del cliente"
+        class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base block w-full p-2.5">
+
+    </div>
+
+    <!-- COMPRADORES -->
+    <div class="mb-4">
+
+      <label class="block mb-2 text-sm font-medium text-heading">
+        Cantidad de compradores
+      </label>
+
+      <input
+        type="number"
+        [(ngModel)]="compradores"
+        min="1"
+        step="1"
+        class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base block w-full p-2.5">
+
+    </div>
+
+    <!-- TARJETA -->
+    <div class="mb-4">
+
+      <label class="block mb-2 text-sm font-medium text-heading">
+        ¿Tienes tarjeta Cinéco?
+      </label>
+
+      <div class="flex gap-6">
+
+        <label class="flex items-center gap-2 text-heading">
+          <input
+            type="radio"
+            name="tarjeta"
+            [(ngModel)]="tarjeta"
+            value="si"
+            class="w-4 h-4 text-fg-brand">
+          Sí
+        </label>
+
+        <label class="flex items-center gap-2 text-heading">
+          <input
+            type="radio"
+            name="tarjeta"
+            [(ngModel)]="tarjeta"
+            value="no"
+            class="w-4 h-4 text-fg-brand">
+          No
+        </label>
+
+      </div>
+
+    </div>
+
+    <!-- BOLETOS -->
+    <div class="mb-5">
+
+      <label class="block mb-2 text-sm font-medium text-heading">
+        Cantidad de boletos
+      </label>
+
+      <input
+        type="number"
+        [(ngModel)]="boletos"
+        min="1"
+        step="1"
+        class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base block w-full p-2.5">
+
+    </div>
+
+    <p class="text-sm text-body mb-5">
+      Precio por boleto: $12.00
+    </p>
+
+    <!-- BOTONES -->
+    <div class="flex gap-3 mb-6">
+
+      <button
+        type="button"
+        (click)="calcular()"
+        class="text-white bg-brand hover:bg-brand-strong font-medium rounded-base text-sm px-5 py-2.5">
+        Procesar
+      </button>
+
+      <button
+        type="button"
+        (click)="limpiar()"
+        class="text-heading bg-neutral-secondary-medium border border-default-medium font-medium rounded-base text-sm px-5 py-2.5">
+        Limpiar
+      </button>
+
+    </div>
+
+    <!-- RESULTADO -->
+    <div class="border-t border-default pt-5">
+
+      <h2 class="text-lg font-bold text-heading mb-3">
+        Valor a pagar
+      </h2>
+
+      <p class="text-3xl font-bold text-fg-brand">
+        ${{ totalPagar }}
+      </p>
+
+      <!-- MENSAJE -->
+      <p class="text-sm text-body mt-4">
+        {{ mensaje }}
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
