@@ -1,0 +1,134 @@
+
+<div class="min-h-screen bg-neutral-primary pt-28 px-4 pb-10">
+
+  <div class="max-w-6xl mx-auto">
+
+    <h1 class="text-3xl font-bold text-heading mb-6">
+      Registro de ventas
+    </h1>
+
+    <div class="relative overflow-x-auto border border-default rounded-base">
+
+      <table class="w-full text-sm text-left text-body">
+
+        <thead class="text-xs uppercase bg-neutral-secondary-medium text-heading">
+          <tr>
+            <th class="px-4 py-3">Cliente</th>
+            <th class="px-4 py-3">Compradores</th>
+            <th class="px-4 py-3">Boletos</th>
+            <th class="px-4 py-3">Tarjeta</th>
+            <th class="px-4 py-3">Total</th>
+            <th class="px-4 py-3">Acción</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          <tr *ngFor="let venta of ventas; let i = index"
+              class="bg-neutral-primary border-t border-default">
+
+            <td class="px-4 py-3">
+
+              <input *ngIf="editando == i"
+                type="text"
+                [(ngModel)]="venta.nombre"
+                class="border border-default-medium rounded-base p-2 w-32">
+
+              <span *ngIf="editando != i">
+                {{ venta.nombre }}
+              </span>
+
+            </td>
+
+            <td class="px-4 py-3">
+
+              <input *ngIf="editando == i"
+                type="number"
+                min="1"
+                step="1"
+                [(ngModel)]="venta.compradores"
+                class="border border-default-medium rounded-base p-2 w-20">
+
+              <span *ngIf="editando != i">
+                {{ venta.compradores }}
+              </span>
+
+            </td>
+
+            <td class="px-4 py-3">
+
+              <input *ngIf="editando == i"
+                type="number"
+                min="1"
+                step="1"
+                [(ngModel)]="venta.boletos"
+                class="border border-default-medium rounded-base p-2 w-20">
+
+              <span *ngIf="editando != i">
+                {{ venta.boletos }}
+              </span>
+
+            </td>
+
+            <td class="px-4 py-3">
+
+              <select *ngIf="editando == i"
+                [(ngModel)]="venta.tarjeta"
+                class="border border-default-medium rounded-base p-2">
+
+                <option value="si">Sí</option>
+                <option value="no">No</option>
+
+              </select>
+
+              <span *ngIf="editando != i">
+                {{ venta.tarjeta }}
+              </span>
+
+            </td>
+
+            <td class="px-4 py-3">
+              ${{ venta.total }}
+            </td>
+
+            <td class="px-4 py-3">
+
+              <button *ngIf="editando != i"
+                type="button"
+                (click)="editar(i)"
+                class="text-white bg-brand hover:bg-brand-strong font-medium rounded-base text-sm px-4 py-2">
+                Editar
+              </button>
+
+              <button
+  type="button"
+  (click)="eliminar(i)"
+  class="text-white bg-red-600 hover:bg-red-700 font-medium rounded-base text-sm px-4 py-2 ml-2">
+  Eliminar
+</button>
+
+              <button *ngIf="editando == i"
+                type="button"
+                (click)="guardar()"
+                class="text-white bg-brand hover:bg-brand-strong font-medium rounded-base text-sm px-4 py-2">
+                Guardar
+              </button>
+
+
+            </td>
+
+          </tr>
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+    <p *ngIf="ventas.length == 0" class="text-body mt-5">
+      Todavía no hay compras registradas.
+    </p>
+
+  </div>
+
+</div>

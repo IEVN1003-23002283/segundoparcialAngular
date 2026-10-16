@@ -1,65 +1,159 @@
-<div class="row">
 
-    <div class="col-6">
+<div class="min-h-screen bg-neutral-primary pt-28 px-4 pb-10">
 
-        <div class="mb-3">
-            <label>Nombre</label>
-            <input type="text" [(ngModel)]="nombre" class="form-control">
-        </div>
+  <div class="max-w-xl mx-auto p-6 bg-neutral-primary border border-default rounded-base shadow-xs">
 
-        <div class="mb-3">
-            <label>Apellido paterno</label>
-            <input type="text" [(ngModel)]="apellidoPaterno" class="form-control">
-        </div>
+    <h1 class="text-2xl font-bold text-heading text-center mb-2">
+      Zodiaco Chino
+    </h1>
 
-        <div class="mb-3">
-            <label>Apellido materno</label>
-            <input type="text" [(ngModel)]="apellidoMaterno" class="form-control">
-        </div>
+    <p class="text-body text-center mb-6">
+      Ingresa tus datos personales
+    </p>
 
-        <div class="mb-3">
-            <label>Día</label>
-            <input type="number" [(ngModel)]="dia" class="form-control">
-        </div>
+    <div class="mb-4">
+      <label class="block mb-2 text-sm font-medium text-heading">
+        Nombre
+      </label>
 
-        <div class="mb-3">
-            <label>Mes</label>
-            <input type="number" [(ngModel)]="mes" class="form-control">
-        </div>
+      <input
+        type="text"
+        [(ngModel)]="nombre"
+        class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base block w-full p-2.5">
+    </div>
 
-        <div class="mb-3">
-            <label>Año</label>
-            <input type="number" [(ngModel)]="anio" class="form-control">
-        </div>
+    <div class="grid grid-cols-2 gap-4 mb-4">
 
-        <div class="mb-3">
-            <label>Sexo</label>
+      <div>
+        <label class="block mb-2 text-sm font-medium text-heading">
+          Apellido paterno
+        </label>
 
-            <div>
-                <input type="radio" name="sexo" value="Hombre" [(ngModel)]="sexo">
-                Hombre
-            </div>
+        <input
+          type="text"
+          [(ngModel)]="apellidoPaterno"
+          class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base block w-full p-2.5">
+      </div>
 
-            <div>
-                <input type="radio" name="sexo" value="Mujer" [(ngModel)]="sexo">
-                Mujer
-            </div>
-        </div>
+      <div>
+        <label class="block mb-2 text-sm font-medium text-heading">
+          Apellido materno
+        </label>
 
-        <button (click)="calcular()" type="button" class="btn btn-primary">
-            Imprimir
-        </button>
+        <input
+          type="text"
+          [(ngModel)]="apellidoMaterno"
+          class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base block w-full p-2.5">
+      </div>
 
     </div>
 
-    <div class="col-6">
+    <h2 class="text-lg font-semibold text-heading mb-3">
+      Fecha de nacimiento
+    </h2>
 
-        <h3>{{mensaje}}</h3>
-        <h3>Edad: {{edad}}</h3>
-        <h3>Tu Signo es: {{signo}}</h3>
+    <div class="grid grid-cols-3 gap-4 mb-5">
 
-        <img [src]="imagen" width="200">
+      <div>
+        <label class="block mb-2 text-sm font-medium text-heading">
+          Día
+        </label>
+
+        <input
+          type="number"
+          [(ngModel)]="dia"
+          class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base block w-full p-2.5">
+      </div>
+
+      <div>
+        <label class="block mb-2 text-sm font-medium text-heading">
+          Mes
+        </label>
+
+        <input
+          type="number"
+          [(ngModel)]="mes"
+          class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base block w-full p-2.5">
+      </div>
+
+      <div>
+        <label class="block mb-2 text-sm font-medium text-heading">
+          Año
+        </label>
+
+        <input
+          type="number"
+          [(ngModel)]="anio"
+          class="bg-neutral-secondary-medium border border-default-medium text-heading text-sm rounded-base block w-full p-2.5">
+      </div>
 
     </div>
+
+    <div class="mb-6">
+
+      <label class="block mb-3 text-sm font-medium text-heading">
+        Sexo
+      </label>
+
+      <div class="flex gap-6">
+
+        <label class="flex items-center gap-2 text-heading">
+          <input
+            type="radio"
+            name="sexo"
+            [(ngModel)]="sexo"
+            value="Hombre"
+            class="w-4 h-4 text-fg-brand">
+          Hombre
+        </label>
+
+        <label class="flex items-center gap-2 text-heading">
+          <input
+            type="radio"
+            name="sexo"
+            [(ngModel)]="sexo"
+            value="Mujer"
+            class="w-4 h-4 text-fg-brand">
+          Mujer
+        </label>
+
+      </div>
+
+    </div>
+
+    <button
+      type="button"
+      (click)="calcular()"
+      class="text-white bg-brand hover:bg-brand-strong font-medium rounded-base text-sm px-5 py-2.5 mb-6">
+      Imprimir
+    </button>
+
+    <div class="border-t border-default pt-5">
+
+      <h2 class="text-lg font-bold text-heading mb-3">
+        Resultados
+      </h2>
+
+      <p class="text-body mb-2">
+        {{ mensaje }}
+      </p>
+
+      <p class="text-body mb-2">
+        Edad: {{ edad }}
+      </p>
+
+      <p class="text-body mb-3">
+        Tu signo es: {{ signo }}
+      </p>
+
+      <div class="flex justify-center mt-4">
+
+        <img [src]="imagen" width="200" class="rounded-base">
+
+      </div>
+
+    </div>
+
+  </div>
 
 </div>

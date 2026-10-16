@@ -1,5 +1,8 @@
+
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
+export let registros: any[] = [];
 
 @Component({
   selector: 'app-cinepolis',
@@ -18,11 +21,13 @@ export class Cinepolis {
   precioBoleto: number = 12;
   totalPagar: number = 0;
   mensaje: string = '';
+  procesado: boolean = false;
 
   calcular(): void {
 
     this.totalPagar = 0;
     this.mensaje = '';
+    this.procesado = false;
 
     if (this.nombre == '') {
       this.mensaje = 'Ingresa tu nombre';
@@ -52,20 +57,37 @@ export class Cinepolis {
       }
 
       this.totalPagar = total;
-      this.mensaje = 'Compra realizada correctamente';
+      this.mensaje = 'Compra procesada correctamente';
+      this.procesado = true;
+
     }
 
   }
 
-  limpiar(): void {
+  cargar(): void {
 
-    this.nombre = '';
-    this.compradores = 0;
-    this.tarjeta = '';
-    this.boletos = 0;
+    if (this.procesado == true) {
 
-    this.totalPagar = 0;
-    this.mensaje = '';
+      registros.push({
+        nombre: this.nombre,
+        compradores: this.compradores,
+        boletos: this.boletos,
+        tarjeta: this.tarjeta,
+        total: this.totalPagar
+      });
+
+      this.nombre = '';
+      this.compradores = 0;
+      this.tarjeta = '';
+      this.boletos = 0;
+      this.totalPagar = 0;
+      this.mensaje = 'Compra guardada correctamente';
+      this.procesado = false;
+
+    }
+    else {
+      this.mensaje = 'Primero debes procesar una compra';
+    }
 
   }
 
