@@ -32,18 +32,53 @@ export const routes: Routes = [
   },
 
   {
+    path: 'alumnos',
+    loadComponent: () =>
+      import('./utl/ABCAlumnos/alumnos/alumnos').then(
+        (c) => c.Alumnos
+      ),
+  },
+
+  {
     path: 'cinepolis',
     loadComponent: () =>
       import('./escuela/cinepolis/cinepolis').then(
         (c) => c.Cinepolis
       ),
   },
-  
+
   {
-  path: 'ventas',
-  loadComponent: () =>
-    import('./escuela/ventas/ventas').then(c => c.Ventas)
-},
+    path: 'ventas',
+    loadComponent: () =>
+      import('./escuela/ventas/ventas').then(
+        (c) => c.Ventas
+      ),
+  },
+
+  {
+    path: 'utl',
+    children: [
+      {
+        path: 'alumnos',
+        loadComponent: () =>
+          import('./utl/ABCAlumnos/alumnos/alumnos').then(
+            (c) => c.Alumnos
+          )
+      }
+
+      // Ruta de maestros pendiente de crear
+      /*
+      ,
+      {
+        path: 'maestros',
+        loadComponent: () =>
+          import('./utl/ABCMaestros/maestros/maestros').then(
+            (c) => c.Maestros
+          )
+      }
+      */
+    ]
+  },
 
   {
     path: '',
