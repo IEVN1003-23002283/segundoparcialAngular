@@ -1,0 +1,100 @@
+
+<div class="w-full rounded-lg border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+
+  <h1 class="mb-6 text-2xl font-bold text-gray-900 dark:text-white">
+    Agregar Maestro
+  </h1>
+
+  <form (ngSubmit)="guardarMaestro()" #formMaestro="ngForm">
+
+    <div class="mb-4">
+      <label for="idmaestro" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+        ID Maestro
+      </label>
+      <input
+        id="idmaestro"
+        type="number"
+        name="idmaestro"
+        [(ngModel)]="maestro.idmaestro"
+        required
+        min="1"
+        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm dark:bg-gray-700 dark:text-white"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="nombre" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+        Nombre
+      </label>
+      <input
+        id="nombre"
+        type="text"
+        name="nombre"
+        [(ngModel)]="maestro.nombre"
+        required
+        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm dark:bg-gray-700 dark:text-white"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="apaterno" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+        Apellido Paterno
+      </label>
+      <input
+        id="apaterno"
+        type="text"
+        name="apaterno"
+        [(ngModel)]="maestro.apaterno"
+        required
+        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm dark:bg-gray-700 dark:text-white"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="amaterno" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+        Apellido Materno
+      </label>
+      <input
+        id="amaterno"
+        type="text"
+        name="amaterno"
+        [(ngModel)]="maestro.amaterno"
+        required
+        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm dark:bg-gray-700 dark:text-white"
+      />
+    </div>
+
+    <div class="mb-4">
+      <label for="correo" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
+        Correo
+      </label>
+      <input
+        id="correo"
+        type="email"
+        name="correo"
+        [(ngModel)]="maestro.correo"
+        required
+        email
+        class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm dark:bg-gray-700 dark:text-white"
+      />
+    </div>
+
+    <p class="mb-4 text-red-600">{{mensaje}}</p>
+
+    <div class="flex gap-3">
+      <button
+        type="submit"
+        [disabled]="formMaestro.invalid"
+        class="rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 disabled:opacity-50">
+        Guardar
+      </button>
+
+      <a
+        routerLink="/maestros"
+        class="rounded-lg bg-gray-500 px-5 py-2.5 text-sm font-medium text-white hover:bg-gray-600">
+        Cancelar
+      </a>
+    </div>
+
+  </form>
+</div>

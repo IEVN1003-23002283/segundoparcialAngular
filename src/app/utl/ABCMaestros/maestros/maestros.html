@@ -1,0 +1,108 @@
+
+<div class="w-full rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
+
+  <div class="border-b border-gray-200 px-6 py-4 dark:border-gray-700">
+    <h1 class="text-2xl font-bold text-gray-900 dark:text-white">
+      Lista de Maestros
+    </h1>
+  </div>
+
+  <div class="p-6">
+
+    <div class="mb-4">
+      <a routerLink="/maestros/agregar"
+        class="inline-block rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800">
+        Agregar Maestro
+      </a>
+    </div>
+
+    <div class="mb-4 grid grid-cols-1 gap-4 md:grid-cols-6">
+
+      <label for="filtro"
+        class="text-sm font-medium text-gray-900 dark:text-white md:col-span-2">
+        Filtrar por:
+      </label>
+
+      <div class="md:col-span-4">
+        <input
+          id="filtro"
+          [(ngModel)]="listFilter"
+          type="text"
+          class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 dark:border-gray-600 dark:bg-gray-700 dark:text-white"
+          placeholder="Ingrese nombre del maestro"
+        />
+      </div>
+
+    </div>
+
+    <div class="mb-4">
+      <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+        Filtro: {{listFilter}}
+      </h3>
+    </div>
+
+    <p *ngIf="mensaje" class="mb-4 text-red-600">
+      {{mensaje}}
+    </p>
+
+    <div class="relative overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
+
+      <table *ngIf="dataSource.length > 0"
+        class="w-full text-left text-sm text-gray-500 dark:text-gray-400">
+
+        <thead class="bg-gray-50 text-xs uppercase text-gray-700 dark:bg-gray-700 dark:text-gray-400">
+          <tr>
+            <th class="px-6 py-3">ID Maestro</th>
+            <th class="px-6 py-3">Nombre</th>
+            <th class="px-6 py-3">Apaterno</th>
+            <th class="px-6 py-3">Amaterno</th>
+            <th class="px-6 py-3">Correo</th>
+            <th class="px-6 py-3">Editar</th>
+            <th class="px-6 py-3">Eliminar</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr
+            class="border-b bg-white dark:border-gray-700 dark:bg-gray-800"
+            *ngFor="let maestro of maestrosFiltrados">
+
+            <td class="px-6 py-4">{{maestro.idmaestro}}</td>
+            <td class="px-6 py-4">{{maestro.nombre | uppercase}}</td>
+            <td class="px-6 py-4">{{maestro.apaterno}}</td>
+            <td class="px-6 py-4">{{maestro.amaterno}}</td>
+            <td class="px-6 py-4">{{maestro.correo}}</td>
+
+            <td class="px-6 py-4">
+              <a
+                [routerLink]="['/maestros/editar', maestro.idmaestro]"
+                class="font-medium text-blue-600 hover:underline">
+                Editar
+              </a>
+            </td>
+
+            <td class="px-6 py-4">
+              <a
+                [routerLink]="['/maestros/eliminar', maestro.idmaestro]"
+                class="font-medium text-red-600 hover:underline">
+                Eliminar
+              </a>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+
+      <p *ngIf="dataSource.length === 0 && !mensaje"
+        class="p-4 text-gray-500">
+        No hay maestros registrados.
+      </p>
+
+      <p *ngIf="dataSource.length > 0 && maestrosFiltrados.length === 0"
+        class="p-4 text-gray-500">
+        No se encontraron maestros con ese nombre.
+      </p>
+
+    </div>
+  </div>
+</div>

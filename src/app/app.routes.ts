@@ -33,10 +33,63 @@ export const routes: Routes = [
 
   {
     path: 'alumnos',
-    loadComponent: () =>
-      import('./utl/ABCAlumnos/alumnos/alumnos').then(
-        (c) => c.Alumnos
-      ),
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./utl/ABCAlumnos/alumnos/alumnos').then(
+            (c) => c.Alumnos
+          )
+      },
+      {
+        path: 'editar/:matricula',
+        loadComponent: () =>
+          import('./utl/ABCAlumnos/editar/editar').then(
+            (c) => c.Editar
+          )
+      },
+      {
+        path: 'eliminar/:matricula',
+        loadComponent: () =>
+          import('./utl/ABCAlumnos/eliminar/eliminar').then(
+            (c) => c.Eliminar
+          )
+      }
+    ]
+  },
+
+  {
+    path: 'maestros',
+    children: [
+      {
+        path: '',
+        loadComponent: () =>
+          import('./utl/ABCMaestros/maestros/maestros').then(
+            (c) => c.Maestros
+          )
+      },
+      {
+        path: 'agregar',
+        loadComponent: () =>
+          import('./utl/ABCMaestros/agregar/agregar').then(
+            (c) => c.Agregar
+          )
+      },
+      {
+        path: 'editar/:idmaestro',
+        loadComponent: () =>
+          import('./utl/ABCMaestros/editar/editar').then(
+            (c) => c.Editar
+          )
+      },
+      {
+        path: 'eliminar/:idmaestro',
+        loadComponent: () =>
+          import('./utl/ABCMaestros/eliminar/eliminar').then(
+            (c) => c.Eliminar
+          )
+      }
+    ]
   },
 
   {
@@ -60,23 +113,14 @@ export const routes: Routes = [
     children: [
       {
         path: 'alumnos',
-        loadComponent: () =>
-          import('./utl/ABCAlumnos/alumnos/alumnos').then(
-            (c) => c.Alumnos
-          )
-      }
-
-      // Ruta de maestros pendiente de crear
-      /*
-      ,
+        redirectTo: '/alumnos',
+        pathMatch: 'full'
+      },
       {
         path: 'maestros',
-        loadComponent: () =>
-          import('./utl/ABCMaestros/maestros/maestros').then(
-            (c) => c.Maestros
-          )
+        redirectTo: '/maestros',
+        pathMatch: 'full'
       }
-      */
     ]
   },
 

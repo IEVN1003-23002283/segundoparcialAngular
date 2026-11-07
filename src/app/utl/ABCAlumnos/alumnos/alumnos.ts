@@ -1,6 +1,7 @@
 
 import { AlumnosUTL } from '../alumnosUTL';
 import { Component, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ProyectoapiService } from '../alumnosapi.service';
 import { AlumnoFilterPipe } from '../alumnos-filter.pipe';
@@ -9,7 +10,7 @@ import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-alumnos',
   standalone: true,
-  imports: [FormsModule, AlumnoFilterPipe, CommonModule],
+  imports: [FormsModule, AlumnoFilterPipe, CommonModule, RouterLink],
   templateUrl: './alumnos.html',
 })
 export class Alumnos implements OnInit {
